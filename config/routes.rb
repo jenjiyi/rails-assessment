@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :materials
+  resources :projects
   root 'static#index'
 
   devise_for :users
