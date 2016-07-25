@@ -1,0 +1,13 @@
+<p>
+  <strong>Material:</strong>
+  <%= @material.name %>
+</p>
+<p> <%= @material.name %> </p>
+<ul>
+    <% @material.projects.each do |project| %>
+      <li> <%= link_to project.title, project_path(project) %> </li>
+    <% end %>
+</ul>
+
+<%= link_to 'Back', materials_path %>
+

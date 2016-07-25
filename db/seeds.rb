@@ -5,3 +5,5 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+materials = Material.create([{ name: 'Leather' }, { name: 'Paper' }, { name: 'Paint' }, { name: 'Fabric' }, { name: 'Beads' }])

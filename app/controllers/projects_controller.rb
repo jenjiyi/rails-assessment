@@ -13,6 +13,7 @@ class ProjectsController < ApplicationController
   # GET /projects/new
   def new
     @project = Project.new
+    @materials = @project.materials.build  
   end
 
   # GET /projects/1/edit
@@ -57,6 +58,6 @@ class ProjectsController < ApplicationController
     end
 
     def project_params
-      params.require(:project).permit(:title, :description)
+      params.require(:project).permit(:title, :description, :material_ids => [], :materials_attributes => [:name])
     end
 end

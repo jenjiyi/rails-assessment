@@ -1,4 +1,4 @@
-class MaterialsProject < ActiveRecord::Base
+class MaterialProject < ActiveRecord::Base
   belongs_to :project 
   belongs_to :material
 
