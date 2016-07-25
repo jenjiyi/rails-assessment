@@ -22,10 +22,10 @@
    <div class="field">
     <span>Materials:</span>
     <%= f.collection_check_boxes :material_ids, Material.all, :id, :name %><br>
-    <%= f.fields_for(:materials) do |material_form| %>
-      <%= material_form.label :name %>
-      <%= material_form.text_field :name %>
-    <% end %>
+    <%= f.fields_for :materials, @project.materials.build do |materials_fields| %>
+    <%= materials_fields.text_field :name %>
+  <% end %>
+ 
   </div>
 
     
