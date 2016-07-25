@@ -3,6 +3,7 @@ class Project < ActiveRecord::Base
   has_many :material_projects
   has_many :materials, through: :material_projects
   validates_presence_of :title, :description
+  mount_uploader :image, ImageUploader
 
   # def material_name=(name)
   #     self.material = Material.find_or_create_by(name: name)
@@ -14,4 +15,6 @@ class Project < ActiveRecord::Base
       self.materials << material
     end
   end
+
+
 end
