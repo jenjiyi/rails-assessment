@@ -2,7 +2,7 @@
 
 <h1>Listing Projects</h1>
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th> </th>
@@ -17,15 +17,18 @@
     <% @projects.each do |project| %>
       <tr>
         <td><%= image_tag( project.image.thumb.url , :alt => project.title) %></td>
-        <td><%= project.title %></td>
-        <td><%= project.description %></td>
+        <td><%= link_to project.title, project %></td>
+        <td><%= project.description %> pu:<%= project.user_id %> cu:<%= current_user.id %></td>
         <td><% project.materials.each do |material| %>
                 <%= link_to material.name, material_path(material) %>
             <%end%>
         </td>
         <td><%= link_to 'Show', project %></td>
-        <td><%= link_to 'Edit', edit_project_path(project) %></td>
-        <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Edit', edit_project_path(project) if current_user == project.user %></td>
+        <td><% if current_user = project.user %>
+              <%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?'} %>
+            <% end %>            
+        </td>
       </tr>
     <% end %>
   </tbody>

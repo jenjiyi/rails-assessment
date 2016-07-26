@@ -13,3 +13,6 @@
  *= require_tree .
  *= require_self
  */
+ .messages #flash_alert  {
+      padding: 15px;
+  }

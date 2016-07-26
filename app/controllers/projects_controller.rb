@@ -1,6 +1,6 @@
-class ProjectsController < ApplicationController
+class ProjectsController < ApplicationController 
   before_action :set_project, only: [:show, :edit, :update, :destroy]
-
+  before_action :is_authorized?, only: [:edit, :update]
    # GET /projects
   def index
     @projects = Project.all
@@ -23,10 +23,12 @@ class ProjectsController < ApplicationController
   # POST /projects
   def create
     @project = Project.new(project_params)
-
+    # @project.set_user_id!(current_user)
+    @project.user_id = current_user.id if current_user
     respond_to do |format|
       if @project.save
         format.html { redirect_to @project, notice: 'Project was successfully created.' }
+        puts current_user
       else
         format.html { render :new }
       end
@@ -53,11 +55,22 @@ class ProjectsController < ApplicationController
   end
 
   private
+
     def set_project
       @project = Project.find(params[:id])
+    end
+
+    def is_authorized?
+      @project = Project.find(params[:id])
+      if current_user != @project.user || !user_signed_in?
+        redirect_to project_path(@project), alert: "Access denied."
+      end
     end
 
     def project_params
       params.require(:project).permit(:title, :description, :image, :material_ids => [], :materials_attributes => [:name])
     end
+
+    
+
 end

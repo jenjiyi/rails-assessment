@@ -5,15 +5,20 @@ class Project < ActiveRecord::Base
   validates_presence_of :title, :description
   mount_uploader :image, ImageUploader
 
-  # def material_name=(name)
-  #     self.material = Material.find_or_create_by(name: name)
-  # end
+  def set_user_id!(user)
+    self.user_id = user.id
+    self.save!
+  end
 
   def materials_attributes=(material_attributes)
     material_attributes.values.each do |material_attribute|
       material = Material.find_or_create_by(material_attribute)
       self.materials << material
     end
+  end
+
+  def date_string
+    self.created_at.strftime("%b %e, %l:%M %p")
   end
 
 

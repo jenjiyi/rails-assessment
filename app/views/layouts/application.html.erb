@@ -13,10 +13,10 @@
   <header>
       <%= render 'layouts/navigation' %>
   </header>
-  <div class="container messages">
-    <%= content_tag(:div, flash[:error], :id => "flash_error") if flash[:error] %>
-    <%= content_tag(:div, flash[:notice], :id => "flash_notice") if flash[:notice] %>
-    <%= content_tag(:div, flash[:alert], :id => "flash_alert") if flash[:alert] %>
+  <div class="container messages bg-info">
+    <%= content_tag(:div, flash[:error], :id => "flash_error", :class => "text-danger") if flash[:error] %>
+    <%= content_tag(:div, flash[:notice], :id => "flash_notice", :class => "text-info") if flash[:notice] %>
+    <%= content_tag(:div, flash[:alert], :id => "flash_alert", :class => "text-warning") if flash[:alert] %>
 </div>
   <div class="container">
     <%= yield %>
