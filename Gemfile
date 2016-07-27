@@ -29,6 +29,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'devise'
 gem 'carrierwave', '~> 0.10.0'
 gem 'mini_magick', '~> 4.3'
+gem 'omniauth'
+gem "omniauth-google-oauth2"
 
 # Use Unicorn as the app server
 # gem 'unicorn'

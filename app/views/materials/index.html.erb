@@ -6,16 +6,15 @@
   <thead>
     <tr>
       <th>Name</th>
-      <th>Description</th>
-      <th colspan="2"></th>
+      <th></th>
     </tr>
   </thead>
 
   <tbody>
     <% @materials.each do |material| %>
       <tr>
-        <td><%= material.name %></td>
-        <td><%= link_to 'Show', material %></td>
+        <td><%= link_to material.name, material %></td>
+        <td><%= link_to 'See projects', material %></td>
       </tr>
     <% end %>
   </tbody>

@@ -18,6 +18,8 @@
   <%= image_tag( @project.image.url , :alt => @project.title, :class => "img-responsive img-rounded") %>
 </div>
 
-
-<%= link_to 'Edit', edit_project_path(@project) %> |
+<%= link_to 'Edit', edit_project_path(@project) if current_user == @project.user %>  
+<% if current_user == @project.user %>
+              <%= link_to 'Destroy', project_path, method: :delete, data: { confirm: 'Are you sure?'} %>
+            <% end %>  
 <%= link_to 'View all', projects_path %>
