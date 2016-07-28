@@ -11,9 +11,11 @@ class Project < ActiveRecord::Base
   end
 
   def materials_attributes=(material_attributes)
-    material_attributes.values.each do |material_attribute|
-      material = Material.find_or_create_by(material_attribute)
-      self.materials << material
+    material_attributes.values.each do |materials_attributes|
+      unless !materials_attributes.blank?
+        material = Material.find_or_create_by(material_attribute)
+        self.materials << material
+      end
     end
   end
 

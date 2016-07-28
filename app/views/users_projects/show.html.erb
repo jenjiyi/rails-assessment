@@ -1,0 +1,10 @@
+<h2><%= @user.email %>'s project list</h2>
+<ul>
+ 
+  <% @user.projects.each do |project| %>
+   <li>
+  <%= link_to project.title, project_path(project) %>
+  </li>
+  <% end %>
+  
+</ul>
