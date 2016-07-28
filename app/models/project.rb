@@ -23,5 +23,9 @@ class Project < ActiveRecord::Base
     self.created_at.strftime("%b %e, %l:%M %p")
   end
 
+  def self.most_recent_project
+    self.order("created_at").last
+  end
+
 
 end
