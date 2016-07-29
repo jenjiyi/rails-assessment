@@ -11,8 +11,8 @@ class Project < ActiveRecord::Base
   end
 
   def materials_attributes=(material_attributes)
-    material_attributes.values.each do |materials_attributes|
-      unless !materials_attributes.blank?
+    material_attributes.values.each do |material_attribute|
+      if material_attribute.present?
         material = Material.find_or_create_by(material_attribute)
         self.materials << material
       end
